@@ -23,11 +23,12 @@ app.post("/chat", async (req, res) => {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: message }],
-      max_tokens: 50,
+      max_tokens: 1000,
       temperature: 0.7,
     });
 
     const chatResponse = response.choices[0].message.content;
+    console.log(chatResponse);
 
     res.json({ response: chatResponse });
   } catch (error) {
